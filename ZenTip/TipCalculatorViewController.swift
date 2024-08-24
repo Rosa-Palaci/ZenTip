@@ -9,22 +9,34 @@ import UIKit
 
 class TipCalculatorViewController: UIViewController {
 
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var tipValueLabel: UILabel!
+    @IBOutlet weak var partySizeLabel: UILabel!
     @IBOutlet weak var totalWithTipLabel: UILabel!
     @IBOutlet weak var totalPerPersonLabel: UILabel!
     
+    
+    var amount: Double?
+    var tipValue: Double?
+    var partySize: Int?
     var totalWithTip: Double?
     var totalPerPerson: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        if let totalWithTip = totalWithTip, let totalPerPerson = totalPerPerson {
+        if let amount = amount,
+           let tipValue = tipValue,
+           let partySize = partySize,
+           let totalWithTip = totalWithTip,
+           let totalPerPerson = totalPerPerson {
+            amountLabel.text = String(format: "$%.2f", amount)
+            tipValueLabel.text = String(format: "$%.2f", tipValue)
+            partySizeLabel.text = "\(partySize)"
             totalWithTipLabel.text = String(format: "$%.2f", totalWithTip)
             totalPerPersonLabel.text = String(format: "$%.2f", totalPerPerson)
+            }
         }
-    }
-    
 
     /*
     // MARK: - Navigation
